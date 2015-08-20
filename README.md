@@ -23,7 +23,7 @@ Download: <http://www.erisc.se/git-deploy-hook/update-checkout_and_deploy.sh>
 
 Example deployment script: <http://www.erisc.se/git-deploy-hook/deploy-master>
 
-This script is based on the update.sample script shipped with Git, thereby
+This script is based on the `update.sample` script shipped with Git, thereby
 licensed under
 [GPLv2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).
 
@@ -54,7 +54,7 @@ licensed under
     #
     # Example deployment script: <http://www.erisc.se/git-deploy-hook/deploy-master>
     #
-    # This script is based on the update.sample script shipped with Git, thereby
+    # This script is based on the `update.sample` script shipped with Git, thereby
     # licensed under
     # [GPLv2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).
     #
