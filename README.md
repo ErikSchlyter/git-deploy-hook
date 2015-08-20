@@ -27,7 +27,7 @@ This script is based on the `update.sample` script shipped with Git, thereby
 licensed under
 [GPLv2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).
 
-### Source code
+### Source code, `update-checkout_and_deploy.sh`
     #!/bin/bash
     #
     # A Server-Side Git Hook for Automatic Build/Deployment
@@ -109,3 +109,28 @@ licensed under
     	exit 1
     fi
     
+### Example deployment script, `deploy-master`
+    #!/bin/bash
+    #
+    # An example deployment script that creates a README.md and index.html from the
+    # update-checkout_and_deploy.sh script, and copies it to the path specified by
+    # `git config deployment.path`.
+    
+    sed -n -e '2,/^$/s%^# *%%p' ./update-checkout_and_deploy.sh > README.md
+    
+    echo '### Source code, `update-checkout_and_deploy.sh`' >> README.md
+    sed -e 's%^%    %' update-checkout_and_deploy.sh >> README.md
+    
+    echo '### Example deployment script, `deploy-master`' >> README.md
+    sed -e 's%^%    %' deploy-master >> README.md
+    
+    markdown README.md > index.html
+    
+    if [ -z "$(git config deployment.path)" ]; then
+        echo "No deployment path found. Execute 'git config deployment.path PATH'." >&2
+        exit 1
+    else
+        cp * "$(git config deployment.path)/"
+    fi
+    
+    exit 0

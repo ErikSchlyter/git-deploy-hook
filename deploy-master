@@ -2,11 +2,16 @@
 #
 # An example deployment script that creates a README.md and index.html from the
 # update-checkout_and_deploy.sh script, and copies it to the path specified by
-# git config deployment.path
+# `git config deployment.path`.
 
 sed -n -e '2,/^$/s%^# *%%p' ./update-checkout_and_deploy.sh > README.md
-echo "### Source code" >> README.md
+
+echo '### Source code, `update-checkout_and_deploy.sh`' >> README.md
 sed -e 's%^%    %' update-checkout_and_deploy.sh >> README.md
+
+echo '### Example deployment script, `deploy-master`' >> README.md
+sed -e 's%^%    %' deploy-master >> README.md
+
 markdown README.md > index.html
 
 if [ -z "$(git config deployment.path)" ]; then
