@@ -10,25 +10,24 @@ tests and updates the project documentation page before it automatically
 forwards the now stable changes to my public GitHub account. The revision will
 be rejected if the deployment script exits with a non-zero value.
 
-Install this script by naming it "update" and put it in yourgitrepo.git/hooks/
+Install this script by naming it `update` and put it in `yourgitrepo.git/hooks/`
 
 The deployment scripts should be located in the same directory as the git
 hooks, and be named by the specific branches they are supposed to deploy
 (i.e., `deploy-master`, `deploy-release`, etc.). The script will accept the
 revision if there is no deployment script for the given branch.
 
+Source code: <https://github.com/ErikSchlyter/git-deploy-hook>
+
+Download: <http://www.erisc.se/git-deploy-hook/update-checkout_and_deploy.sh>
+
+Example deployment script: <http://www.erisc.se/git-deploy-hook/deploy-master>
+
 This script is based on the update.sample script shipped with Git, thereby
 licensed under
 [GPLv2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).
 
-
-
-[download script](http://www.erisc.se/git-deploy-hook/update-checkout_and_deploy.sh)
-
-
-[download example deployment script](http://www.erisc.se/git-deploy-hook/deploy-master)
-
-
+### Source code
     #!/bin/bash
     #
     # A Server-Side Git Hook for Automatic Build/Deployment
@@ -42,12 +41,18 @@ licensed under
     # forwards the now stable changes to my public GitHub account. The revision will
     # be rejected if the deployment script exits with a non-zero value.
     #
-    # Install this script by naming it "update" and put it in yourgitrepo.git/hooks/
+    # Install this script by naming it `update` and put it in `yourgitrepo.git/hooks/`
     #
     # The deployment scripts should be located in the same directory as the git
     # hooks, and be named by the specific branches they are supposed to deploy
     # (i.e., `deploy-master`, `deploy-release`, etc.). The script will accept the
     # revision if there is no deployment script for the given branch.
+    #
+    # Source code: <https://github.com/ErikSchlyter/git-deploy-hook>
+    #
+    # Download: <http://www.erisc.se/git-deploy-hook/update-checkout_and_deploy.sh>
+    #
+    # Example deployment script: <http://www.erisc.se/git-deploy-hook/deploy-master>
     #
     # This script is based on the update.sample script shipped with Git, thereby
     # licensed under
