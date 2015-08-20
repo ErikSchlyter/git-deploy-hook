@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# An example deployment script that creates a README.md and index.html from the
+# update-checkout_and_deploy.sh script, and copies it to the path specified by
+# git config deployment.path
+
+sed -n -e '2,/^$/s%^# *%%p' ./update-checkout_and_deploy.sh > README.md
+echo -e "\n\n[download script]($(git config deployment.url)/update-checkout_and_deploy.sh)\n" >> README.md
+echo -e "\n[download example deployment script]($(git config deployment.url)/deploy-master)\n\n" >> README.md
+sed -e 's%^%    %' update-checkout_and_deploy.sh >> README.md
+markdown README.md > index.html
+
+if [ -z "$(git config deployment.path)" ]; then
+    echo "No deployment path found. Execute 'git config deployment.path PATH'." >&2
+    exit 1
+else
+    cp * "$(git config deployment.path)/"
+fi
+
+exit 0
