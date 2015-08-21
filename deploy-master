@@ -7,12 +7,16 @@
 sed -n -e '2,/^$/s%^# *%%p' ./update-checkout_and_deploy.sh > README.md
 
 echo '### Source code, `update-checkout_and_deploy.sh`' >> README.md
-sed -e 's%^%    %' update-checkout_and_deploy.sh >> README.md
+echo '```bash' >> README.md
+cat update-checkout_and_deploy.sh >> README.md
+echo '```' >> README.md
 
 echo '### Example deployment script, `deploy-master`' >> README.md
-sed -e 's%^%    %' deploy-master >> README.md
+echo '```bash' >> README.md
+cat deploy-master >> README.md
+echo '```' >> README.md
 
-markdown README.md > index.html
+pandoc README.md > index.html
 
 if [ -z "$(git config deployment.path)" ]; then
     echo "No deployment path found. Execute 'git config deployment.path PATH'." >&2
