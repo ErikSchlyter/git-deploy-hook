@@ -115,7 +115,7 @@ fi
 ```bash
 #!/bin/bash
 #
-# An example deployment script that creates a README.md and index.html from the
+# An example deployment script that creates a README.md from the
 # update-checkout_and_deploy.sh script, and copies it to the path specified by
 # `git config deployment.path`.
 
@@ -130,8 +130,6 @@ echo '### Example deployment script, `deploy-master`' >> README.md
 echo '```bash' >> README.md
 cat deploy-master >> README.md
 echo '```' >> README.md
-
-pandoc README.md > index.html
 
 if [ -z "$(git config deployment.path)" ]; then
     echo "No deployment path found. Execute 'git config deployment.path PATH'." >&2
