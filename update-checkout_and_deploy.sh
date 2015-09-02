@@ -15,8 +15,11 @@
 #
 # The deployment scripts should be located in the same directory as the git
 # hooks, and be named by the specific branches they are supposed to deploy
-# (i.e., `deploy-master`, `deploy-release`, etc.). The script will accept the
-# revision if there is no deployment script for the given branch.
+# (i.e., `deploy-master`, `deploy-release`, etc.). They will be executed from
+# the temporary directory that contains the newly checked out revision.
+#
+# This script will accept the revision if there is no deployment script for the
+# given branch.
 #
 # Source code: <https://github.com/ErikSchlyter/git-deploy-hook>
 #
